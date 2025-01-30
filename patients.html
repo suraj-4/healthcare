@@ -1,0 +1,220 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HealthCare Dashboard</title>
+        <link rel="icon" href="./assets/images/healthcarelogo-icon.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" href="./assets/css/responsive.css">
+    </head>
+    <body>
+        
+        <main>
+            <header>
+                <div class="container-fluid">
+                    <div class="header_wrapper">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <a href="#">
+                                    <img src="./assets/images/healthcarelogo.png" alt="healthcarelogo">
+                                </a>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="navbar_wrapper">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item"><a href="#" class="nav-link"><img src="./assets/images/icon/home_icon.svg" alt="home_icon"><span>Overview</span></a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link active"><img src="./assets/images/icon/patients_icon.svg" alt="patients_icon"><span>Patients</span></a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link"><img src="./assets/images/icon/calendar_icon.svg" alt="calendar_icon"><span>Schedule</span></a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link"><img src="./assets/images/icon/chat_icon.svg" alt="chat_icon"><span>Message</span></a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link"><img src="./assets/images/icon/credit_card_icon.svg" alt="credit_card_icon"><span>Transactions</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="right_side_wrapper">
+                                    <div class="profile_wrapper">
+                                        <img src="./assets/images/profile-sm-img.png" alt="profile-sm-img">
+                                        <div class="profile_info">
+                                            <h6>Dr. Jose Simmons</h6>
+                                            <span>General Practitioner</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="logout_wrapper">
+                                        <img src="./assets/images/icon/settings_icon.svg" alt="settings_icon" class="setting_icon">
+                                        <img src="./assets/images/icon/vertical_three_dots_icon.svg" alt="vertical_three_dots" class="three_dots_icon">
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="main_wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="left_wrapper">
+                                <div class="col_heading">
+                                    <h3>Patients</h3>
+                                    <div class="search_field">
+                                        <input type="text">
+                                        <img src="./assets/images/icon/search_icon.svg" alt="search_icon">    
+                                    </div>
+                                </div>
+                                <div class="list_wrapper" id="patientsList_container">
+                                    <!-- coming from data in patientAPI.js (Patients List) -->
+                                    <div class="list_item_wrapper">
+                                        <p>loading</p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="middle_wrapper">
+                                <h3>Diagnosis History</h3>
+                                <div class="chart_wrapper">
+                                    <div class="chart_area_wrapper">
+                                        <div class="chart_area_header">
+                                            <h4>Blood Pressure</h4>
+                                            <select name="" id="" class="btn">
+                                                <option value="6" selected>Last 6 months</option>
+                                                <option value="12">Last 12 months</option>
+                                                <option value="18">Last 18 months</option>
+                                                <option value="24">Last 24 months</option>
+                                            </select>
+                                        </div>
+                                        <canvas id="diagnosis_history" class="diagnosis_history"></canvas>
+                                    </div>
+                                    <div class="chart_info_wrapper">
+                                        <div class="chart_info_item">
+                                            <h6>Systolic</h6>
+                                            <h3 id="bp_systolic_val"></h3>
+                                            <span id="bp_systolic_lev"></span>
+                                            
+                                        </div>
+                                        <div class="chart_info_item">
+                                            <h6>Diastolic</h6>
+                                            <h3 id="bp_biastolic_val"></h3>
+                                            <span id="bp_biastolic_lev"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cards_style_one_wrapper">
+                                    <div class="card_wrapper">
+                                        <img src="./assets/images/icon/respiratory_rate.svg" alt="respiratory_rate" class="card_icon">
+                                        <p>Respiratory Rate</p>
+                                        <h4><span id="res_rate_value"></span>bpm</h4>
+                                        <span id="res_rate_level"></span>
+                                    </div>
+                                    <div class="card_wrapper">
+                                        <img src="./assets/images/icon/temperature.svg" alt="temperature" class="card_icon">
+                                        <p>Temperature</p>
+                                        <h4><span id="temp_value"></span> °F</h4>
+                                        <span id="temp_level"></span>
+                                    </div>
+                                    <div class="card_wrapper">
+                                        <img src="./assets/images/icon/heartbpm.svg" alt="heartbpm" class="card_icon">
+                                        <p>Heart Rate</p>
+                                        <h4><span id="heart_rate_value"></span> bpm</h4>
+                                        <span id="heart_rate_level"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="middle_wrapper">
+                                <h3>Diagnostic List</h3>
+                                <div class="table_wrapper">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Problem/Diagnosis</th>
+                                                <th>Description</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="diagnostic_list_container">
+                                            <!-- coming from data in patientAPI.js (Diagnostic List) -->
+                                            <tr>
+                                                <td>loading</td>
+                                                <td>loading</td>
+                                                <td>loading</td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="right_wrapper">
+                                <div class="center">
+                                    <img src="./assets/images/profile-lg-img.png" alt="profile-lg-img" class="widhei_120 mb-3" id="patient_img">
+                                    <h3 id="patient_name">loading</h3>
+                                </div>
+                                <div class="list_style_two_wrapper">
+                                    <div class="list_item_style_two">
+                                        <img src="./assets/images/icon/birthIcon.svg" alt="birthIcon">
+                                        <div class="list_item_content">
+                                            <span>Date Of Birth</span>
+                                            <h6 id="dob">loading</h6>
+                                        </div>
+                                    </div>
+                                    <div class="list_item_style_two">
+                                        <img src="./assets/images/icon/femaleIcon.svg" alt="femaleIcon">
+                                        <div class="list_item_content">
+                                            <span>Gender</span>
+                                            <h6 id="gender">loading</h6>
+                                        </div>
+                                    </div>
+                                    <div class="list_item_style_two">
+                                        <img src="./assets/images/icon/phoneIcon.svg" alt="phoneIcon">
+                                        <div class="list_item_content">
+                                            <span>Contact Info.</span>
+                                            <h6 id="mob_no">loading</h6>
+                                        </div>
+                                    </div>
+                                    <div class="list_item_style_two">
+                                        <img src="./assets/images/icon/phoneIcon.svg" alt="phoneIcon">
+                                        <div class="list_item_content">
+                                            <span>Emergency Contacts</span>
+                                            <h6 id="eme_no">loading</h6>
+                                        </div>
+                                    </div>
+                                    <div class="list_item_style_two">
+                                        <img src="./assets/images/icon/insuranceIcon.svg" alt="insuranceIcon">
+                                        <div class="list_item_content">
+                                            <span>Insurance Provider</span>
+                                            <h6 id="ins_type">loading</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn_style_one">
+                                    <a href="#">Show All Information</a>
+                                </div>
+                            </div>
+                            <div class="right_wrapper">
+                                <h3>Lab Results</h3>
+                                <div class="list_style_three_wrapper" id="lab_results_container">
+                                    <!-- coming from data in patientAPI.js (Lab Results) -->
+                                    <div class="list_item_style_three">
+                                        <p class="lab_result">Loading</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="./assets/js/patientAPI.js"></script>
+        <script src="./assets/js/custom.js"></script>
+    </body>
+    </html>
